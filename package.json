@@ -1,0 +1,24 @@
+{
+  "name": "recipebook",
+  "version": "1.0.0",
+  "description": "recipe application",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/plugin-proposal-private-methods": "^7.14.5",
+    "@babel/plugin-proposal-private-property-in-object": "^7.14.5",
+    "core-js": "^3.16.3",
+    "fraction.js": "^4.1.1",
+    "fractional": "^1.0.0",
+    "regenerator-runtime": "^0.13.9"
+  },
+  "devDependencies": {
+    "@parcel/transformer-image": "^2.0.0-rc.0",
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "parcel": "^2.0.0-rc.0"
+  }
+}
