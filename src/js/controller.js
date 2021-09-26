@@ -1,4 +1,5 @@
 import * as model from './model.js';
+import { MODAL_CLOSE_SEC } from './config.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
@@ -7,14 +8,13 @@ import bookmarksView from './views/bookmarksView.js';
 import addRecipeView from './views/addRecipeView.js';
 import 'core-js/stable';
 
-
 import 'regenerator-runtime/runtime';
 
 // if (module.hot) {
 //   module.hot.accept();
 // }
 
-console.log(addRecipeView);
+
 
 const controlRecipes = async function () {
   try {
@@ -43,7 +43,7 @@ const controlSearchResults = async function () {
   try {
     const query = searchView.getQuery();
     if (!query) return;
-    console.log(query);
+   // console.log(query);
     resultsView.renderSpinner();
     await model.loadSearchResults(query);
 
@@ -75,7 +75,7 @@ const controlAddBookmark = function () {
   console.log(model.state.recipe);
 
   recipeView.update(model.state.recipe);
-  bookmarksView.update(model.state.bookmarks);
+  bookmarksView.render(model.state.bookmarks);
   book;
 };
 
@@ -83,8 +83,35 @@ const controlBookmark = function () {
   bookmarksView.render(model.state.bookmarks);
 };
 
-const controlAddRecipe = function (newRecipe) {
-  console.log(newRecipe);
+const controlAddRecipe = async function (newRecipe) {
+  try {
+    // Show loading spinner
+    addRecipeView.renderSpinner();
+
+    // Upload the new recipe data
+    await model.uploadRecipe(newRecipe);
+    console.log(model.state.recipe);
+
+    // Render recipe
+    recipeView.render(model.state.recipe);
+
+    // Success message
+    addRecipeView.renderMessage();
+
+    // Render bookmark view
+    bookmarksView.render(model.state.bookmarks);
+
+    // Change ID in URL
+    window.history.pushState(null, '', `#${model.state.recipe.id}`);
+
+    // Close form window
+    setTimeout(function () {
+      addRecipeView.toggleWindow();
+    }, MODAL_CLOSE_SEC * 1000);
+  } catch (err) {
+    console.error('💥', err);
+    addRecipeView.renderError(err.message);
+  }
 };
 
 const init = function () {

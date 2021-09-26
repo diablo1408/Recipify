@@ -1,6 +1,6 @@
 .header {
   grid-area: head;
-  background-color: $color-grey-light-1;
+  background-color: $color-grey-light-2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,6 +10,10 @@
     height: 4.6rem;
     display: block;
   }
+
+}
+.header img{
+   size:50px;
 }
 
 .search {
