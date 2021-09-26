@@ -4984,16 +4984,8 @@ node_modules/core-js/modules/es.string.trim.js
 node_modules/core-js/modules/es.symbol.async-iterator.js
 node_modules/core-js/modules/es.symbol.description.js
 node_modules/core-js/modules/README.md
-dist/favicon.62381efe.png
-dist/icons.1ea35d5c.svg
-dist/icons.c097e590.svg
-dist/index.436439df.js
-dist/index.436439df.js.map
-dist/index.fa02a0b5.css
-dist/index.fa02a0b5.css.map
-dist/index.html
-dist/logo.739a33b1.png
 .parcel-cache/cc001662b4fa88d5.txt
 .parcel-cache/data.mdb
 .parcel-cache/lock.mdb
 node_modules
+dist
